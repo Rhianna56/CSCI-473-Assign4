@@ -59,6 +59,16 @@ namespace ChappellEberleAstorga_Assign4
             circleColor.BindingContext = new BindingContext();
 
         }
+        
+           /* -------------------------------------------------------------------------------
+        * Function: Private void Set_Bounds()
+        * 
+        * Use:  Creates the bounds to the graphing calulator     
+        *
+        * Parameters:sender,e
+        * 
+        * Returns: N/A
+        * -------------------------------------------------------------------------------*/
 
         private void Set_Bounds(object sender, EventArgs e)
         {
@@ -89,6 +99,15 @@ namespace ChappellEberleAstorga_Assign4
 
         }
 
+ /* -------------------------------------------------------------------------------
+        * Function: clearGraph()
+        * 
+        * Use: used to clear the graph
+        *        
+        * Parameters:sender,e
+        * 
+        * Returns: N/A
+        * -------------------------------------------------------------------------------*/
         private void clearGraph(object sender, EventArgs e)
         {
 
@@ -142,30 +161,40 @@ namespace ChappellEberleAstorga_Assign4
             circleColor.SelectedIndex = -1;
         }
 
+         /* -------------------------------------------------------------------------------
+        * Function: 
+        * 
+        * Use:
+        *        
+        *
+        * Parameters:N/A
+        * 
+        * Returns: N/A
+        * -------------------------------------------------------------------------------*/
         private void LinEqHint(object sender, EventArgs e)
         {
-            displayBoxBottom.Clear();
+            displayBoxBottom.Clear();   //if clear.... prints message on what to do
             string linHint = "Linear Equations (y = mx + b) where 'm' is the slope and 'b' is the y-intercept";
             displayBoxBottom.Text = linHint;
         }
 
         private void QuadEqHint(object sender, EventArgs e)
         {
-            displayBoxBottom.Clear();
+            displayBoxBottom.Clear(); //if clear print a message on what to do
             string linHint = "Quadratic Equations (y = ax^2 + bx + c), where a, b, and c are real number coefficients";
             displayBoxBottom.Text = linHint;
         }
 
         private void CubEqHint(object sender, EventArgs e)
         {
-            displayBoxBottom.Clear();
+            displayBoxBottom.Clear(); ///if clear print a message on what to do
             string linHint = "Cubic Equations (y = ax^3 + bx^2 + cx + d), where a, b, c, and d are real number coefficients";
             displayBoxBottom.Text = linHint;
         }
 
         private void CirEqHint(object sender, EventArgs e)
         {
-            displayBoxBottom.Clear();
+            displayBoxBottom.Clear();  //if clear print a message on what to do
             string linHint = "Circle Equations ((x - h)^2 + (y - k)^2 = r^2 ), where (h, k) is the center of the circle, and r is the radius";
             displayBoxBottom.Text = linHint;
         }
