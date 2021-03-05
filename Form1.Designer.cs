@@ -1,4 +1,4 @@
-namespace Chris_Parker_Assign4
+namespace ChappellEberleAstorga_Assign4
 {
     partial class Form1
     {
