@@ -353,7 +353,8 @@ namespace ChappellEberleAstorga_Assign4
         {                      
 
             Graphics g = CoordinatePlane.CreateGraphics();
-
+             
+            //lets user select color
             if ((string)quadColor.SelectedValue == "White")
             {
                 selectedPen = new Pen(Color.White);
@@ -408,6 +409,7 @@ namespace ChappellEberleAstorga_Assign4
         {
             Graphics g = CoordinatePlane.CreateGraphics();
 
+            //lets user select color
             if ((string)cubicColor.SelectedValue == "White")
             {
                 selectedPen = new Pen(Color.White);
@@ -474,7 +476,7 @@ namespace ChappellEberleAstorga_Assign4
         {
             Graphics g = CoordinatePlane.CreateGraphics();
 
-            //handles color selction
+            //lets user select color
             if ((string)circleColor.SelectedValue == "White")
             {
                 selectedPen = new Pen(Color.White);
@@ -913,12 +915,14 @@ namespace ChappellEberleAstorga_Assign4
         * -------------------------------------------------------------------------------*/
         private void xMinChanged(object sender, EventArgs e)
         {
-            int min = Convert.ToInt32(xMinRange.Value); //gets int from num up down
-            int max = Convert.ToInt32(xMaxRange.Value); //gets int from num up down
+            //get int
+            int min = Convert.ToInt32(xMinRange.Value); 
+            int max = Convert.ToInt32(xMaxRange.Value); 
 
             if (min > max)
             {
-                xMaxRange.Value = xMinRange.Value; //if min>max set max = min
+                //if min ever gets larger than max then make min = max
+                xMaxRange.Value = xMinRange.Value; 
             }
         }
              /* -------------------------------------------------------------------------------
@@ -932,12 +936,14 @@ namespace ChappellEberleAstorga_Assign4
         * -------------------------------------------------------------------------------*/
         private void xMaxChanged(object sender, EventArgs e)
         {
-            int min = Convert.ToInt32(xMinRange.Value); //gets int from num up down
-            int max = Convert.ToInt32(xMaxRange.Value); //gets int from num up down
+             //get int
+            int min = Convert.ToInt32(xMinRange.Value); 
+            int max = Convert.ToInt32(xMaxRange.Value); 
 
             if (max < min)
             {
-                xMinRange.Value = xMaxRange.Value; //if min>max set min = max
+                //if min ever gets larger than max then make min = max
+                xMinRange.Value = xMaxRange.Value; 
             }
         }
             /* -------------------------------------------------------------------------------
@@ -951,12 +957,14 @@ namespace ChappellEberleAstorga_Assign4
         * -------------------------------------------------------------------------------*/
         private void yMinChanged(object sender, EventArgs e)
         {
-            int min = Convert.ToInt32(yMinRange.Value); //gets int from num up down
-            int max = Convert.ToInt32(yMaxRange.Value); //gets int from num up down
+              //get int
+            int min = Convert.ToInt32(yMinRange.Value); 
+            int max = Convert.ToInt32(yMaxRange.Value);
 
             if (min > max)
             {
-                yMaxRange.Value = yMinRange.Value; //if min>max set max = min
+                //if min ever gets larger than max then make min = max
+                yMaxRange.Value = yMinRange.Value; 
             }
         }
             /* -------------------------------------------------------------------------------
@@ -970,12 +978,14 @@ namespace ChappellEberleAstorga_Assign4
         * -------------------------------------------------------------------------------*/
         private void yMaxChanged(object sender, EventArgs e)
         {
-            int min = Convert.ToInt32(yMinRange.Value); //gets int from num up down
-            int max = Convert.ToInt32(yMaxRange.Value); //gets int from num up down
+            //gets int 
+            int min = Convert.ToInt32(yMinRange.Value); 
+            int max = Convert.ToInt32(yMaxRange.Value); 
 
             if (min > max)
             {
-                yMinRange.Value = yMaxRange.Value; //if min>max set max = min
+                //if min ever gets larger than max then make min = max
+                yMinRange.Value = yMaxRange.Value; 
             }
         }
            /* -------------------------------------------------------------------------------
