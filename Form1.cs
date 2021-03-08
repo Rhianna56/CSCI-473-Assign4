@@ -47,7 +47,7 @@ namespace ChappellEberleAstorga_Assign4
 
             whitePen = new Pen(Color.White);
             selectedPen = new Pen(Color.White);
-
+            //color choices
             string[] colors = { "White", "Red", "Green", "Blue" };
             linearColor.DataSource = colors;
             linearColor.BindingContext = new BindingContext();
@@ -65,7 +65,7 @@ namespace ChappellEberleAstorga_Assign4
         * 
         * Use:  Creates the bounds to the graphing calulator     
         *
-        * Parameters:sender,e
+        * Parameters: object sender, EventArgs e
         * 
         * Returns: N/A
         * -------------------------------------------------------------------------------*/
@@ -88,13 +88,23 @@ namespace ChappellEberleAstorga_Assign4
             g.DrawLine(whitePen, (float)Math.Abs(xMin) * (600 / ((float)xMax - (float)xMin)), 0, (float)Math.Abs(xMin) * (600 / ((float)xMax - (float)xMin)), CoordinatePlane.Height);
         }
 
+       /* -------------------------------------------------------------------------------
+        * Function: Private void Draw Axes
+        * 
+        * Use:  draws the horizonal and verical axis
+        *
+        * Parameters: object sender, PaintEventArgs e
+        * 
+        * Returns: N/A
+        * -------------------------------------------------------------------------------*/
+
         private void DrawAxes(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
 
-            //Horizontal Axis
+            //Horizontal 
             g.DrawLine(whitePen, 0, (float)yMax * (600 / ((float)yMax - (float)yMin)), CoordinatePlane.Width, (float)yMax * (600 / ((float)yMax - (float)yMin)));
-            //Vertical Axis
+            //Vertical 
             g.DrawLine(whitePen, (float)Math.Abs(xMin) * (600 / ((float)xMax - (float)xMin)), 0, (float)Math.Abs(xMin) * (600 / ((float)xMax - (float)xMin)), CoordinatePlane.Height);
 
         }
@@ -104,7 +114,7 @@ namespace ChappellEberleAstorga_Assign4
         * 
         * Use: used to clear the graph
         *        
-        * Parameters:sender,e
+        * Parameters: object sender, EventArgs e
         * 
         * Returns: N/A
         * -------------------------------------------------------------------------------*/
@@ -121,27 +131,47 @@ namespace ChappellEberleAstorga_Assign4
             SolidBrush paintItBlack = new SolidBrush(Color.Black);
             g.FillRectangle(paintItBlack, 0, 0, CoordinatePlane.Width, CoordinatePlane.Height);
 
-            //Horizontal Axis
+            //Horizontal 
             g.DrawLine(whitePen, 0, (float)yMax * (600 / ((float)yMax - (float)yMin)), CoordinatePlane.Width, (float)yMax * (600 / ((float)yMax - (float)yMin)));
-            //Vertical Axis
+            //Vertical 
             g.DrawLine(whitePen, (float)Math.Abs(xMin) * (600 / ((float)xMax - (float)xMin)), 0, (float)Math.Abs(xMin) * (600 / ((float)xMax - (float)xMin)), CoordinatePlane.Height);
         }
 
+        /* -------------------------------------------------------------------------------
+        * Function: Private float convert_X_point
+        * 
+        * Use:  Convert the X point on the axis
+        *
+        * Parameters:float x
+        * 
+        * Returns: integer
+        * -------------------------------------------------------------------------------*/
         private float Convert_X_Point(float x)
         {
             float min = (float)xMin;
             float max = (float)xMax;
-
+            
+            //if x min is lower then 0
             if (xMin < 0)
             {
                 return ((x + Math.Abs(min)) * (600 / (max - min)));
             }
+            //if xmin is higher then 0
             else
             {
                 return (x * (600 / (max - min)));
             }
 
         }
+        /* -------------------------------------------------------------------------------
+        * Function: Private void convert_Y_point()
+        * 
+        * Use: to convert the y point
+        *
+        * Parameters:float y
+        * 
+        * Returns: integer
+        * -------------------------------------------------------------------------------*/
 
         private float Convert_Y_Point(float y)
         {
@@ -162,48 +192,84 @@ namespace ChappellEberleAstorga_Assign4
         }
 
          /* -------------------------------------------------------------------------------
-        * Function: 
+        * Function:  linEqHint()
         * 
-        * Use:
-        *        
+        * Use: Uses the rich text area to diaplay the error message      
         *
-        * Parameters:N/A
+        * Parameters: object sender, EventArgs e
         * 
-        * Returns: N/A
+        * Returns: string message
         * -------------------------------------------------------------------------------*/
         private void LinEqHint(object sender, EventArgs e)
         {
-            displayBoxBottom.Clear();   //if clear.... prints message on what to do
+             //if clear.... prints message on what to do
+            displayBoxBottom.Clear();   
             string linHint = "Linear Equations (y = mx + b) where 'm' is the slope and 'b' is the y-intercept";
             displayBoxBottom.Text = linHint;
         }
-
+         /* -------------------------------------------------------------------------------
+        * Function: QuadEqHint()
+        * 
+        * Use: Uses the rich text area to diaplay the error message   
+        *
+        * Parameters: object sender, EventArgs e
+        * 
+        * Returns: string message
+        * -------------------------------------------------------------------------------*/
         private void QuadEqHint(object sender, EventArgs e)
         {
-            displayBoxBottom.Clear(); //if clear print a message on what to do
+            //if clear print a message on what to do
+            displayBoxBottom.Clear(); 
             string linHint = "Quadratic Equations (y = ax^2 + bx + c), where a, b, and c are real number coefficients";
             displayBoxBottom.Text = linHint;
         }
-
+         /* -------------------------------------------------------------------------------
+        * Function: CubEqHint()
+        * 
+        * Use: Uses the rich text area to diaplay the error message      
+        *
+        * Parameters: object sender, EventArgs e
+        * 
+        * Returns: string message
+        * -------------------------------------------------------------------------------*/
         private void CubEqHint(object sender, EventArgs e)
         {
-            displayBoxBottom.Clear(); ///if clear print a message on what to do
+            ///if clear print a message on what to do
+            displayBoxBottom.Clear(); 
             string linHint = "Cubic Equations (y = ax^3 + bx^2 + cx + d), where a, b, c, and d are real number coefficients";
             displayBoxBottom.Text = linHint;
         }
-
+         /* -------------------------------------------------------------------------------
+        * Function: CirEqHint()
+        * 
+        * Use: Uses the rich text area to diaplay the error message    
+        *
+        * Parameters: object sender, EventArgs e
+        * 
+        * Returns: string message
+        * -------------------------------------------------------------------------------*/
         private void CirEqHint(object sender, EventArgs e)
         {
-            displayBoxBottom.Clear();  //if clear print a message on what to do
+           //if clear print a message on what to do
+            displayBoxBottom.Clear(); 
             string linHint = "Circle Equations ((x - h)^2 + (y - k)^2 = r^2 ), where (h, k) is the center of the circle, and r is the radius";
             displayBoxBottom.Text = linHint;
         }
-
+        
+            /* -------------------------------------------------------------------------------
+        * Function:  private void linearGraph()
+        * 
+        * Use: lets a user choose a color uses the color to print out line
+        *
+        * Parameters: object sender, EventArgs e
+        * 
+        * Returns: draw line
+        * -------------------------------------------------------------------------------*/
         private void linearGraph(object sender, EventArgs e)
         {
             Graphics g = CoordinatePlane.CreateGraphics();
 
-
+            //lets user select color they want to use for the equation 
             if ((string)linearColor.SelectedValue == "White")
             {
                 selectedPen = new Pen(Color.White);
@@ -274,7 +340,15 @@ namespace ChappellEberleAstorga_Assign4
             g.DrawLine(selectedPen, x1, y1, x2, y2);
 
         }
-
+            /* -------------------------------------------------------------------------------
+        * Function:  private void quadGraph()
+        * 
+        * Use: lets a user choose a color uses the color to print out line
+        *
+        * Parameters: object sender, EventArgs e
+        * 
+        * Returns: draw line
+        * -------------------------------------------------------------------------------*/
         private void quadGraph(object sender, EventArgs e)
         {                      
 
@@ -318,7 +392,15 @@ namespace ChappellEberleAstorga_Assign4
 
             g.DrawCurve(selectedPen, pointArray);            
         }
-
+            /* -------------------------------------------------------------------------------
+        * Function:   private void cubicGraph()
+        * 
+        * Use: lets a user choose a color uses the color to print out line
+        *
+        * Parameters: object sender, EventArgs e
+        * 
+        * Returns: draw line
+        * -------------------------------------------------------------------------------*/
         private void cubicGraph(object sender, EventArgs e)
         {
             Graphics g = CoordinatePlane.CreateGraphics();
@@ -370,7 +452,15 @@ namespace ChappellEberleAstorga_Assign4
             g.DrawCurve(selectedPen, pointArray);
 
         }
-
+            /* -------------------------------------------------------------------------------
+        * Function:     private void circleGraph()
+        * 
+        * Use: lets a user choose a color uses the color to print out line
+        *
+        * Parameters: object sender, EventArgs e
+        * 
+        * Returns: draw line
+        * -------------------------------------------------------------------------------*/
         private void circleGraph(object sender, EventArgs e)
         {
             Graphics g = CoordinatePlane.CreateGraphics();
@@ -413,16 +503,32 @@ namespace ChappellEberleAstorga_Assign4
             g.DrawEllipse(selectedPen, h + (scaleModX * scaleX) - r, (scaleY * scaleModY) - k - r, r * 2, r * 2);//draws ellipse
 
         }        
-
-        //These functions simply prevent the user from entering letters
+            /* -------------------------------------------------------------------------------
+        * Function:   private void linearMTxtChange()
+        * 
+        * Use: These functions simply prevent the user from entering letters
+        *
+        * Parameters: object sender, EventArgs e
+        * 
+        * Returns: text
+        * -------------------------------------------------------------------------------*/
         private void linearMTxtChange(object sender, EventArgs e)
         {
+            //if user enters letters
             if (System.Text.RegularExpressions.Regex.IsMatch(linearM.Text, "  ^ [0-9]"))
             {
                 linearM.Text = "";
             }
         }
-
+            /* -------------------------------------------------------------------------------
+        * Function:  private void linearMKeyPress()
+        * 
+        * Use: 
+        *
+        * Parameters: object sender, KeyPressEventArgs e
+        * 
+        * Returns: bool
+        * -------------------------------------------------------------------------------*/
         private void linearMKeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.') && (e.KeyChar != '-'))
@@ -430,7 +536,15 @@ namespace ChappellEberleAstorga_Assign4
                 e.Handled = true;
             }
         }
-
+            /* -------------------------------------------------------------------------------
+        * Function:    private void linearBTxtChange()
+        * 
+        * Use: 
+        *
+        * Parameters: object sender, EventArgs e
+        * 
+        * Returns: text
+        * -------------------------------------------------------------------------------*/
         private void linearBTxtChange(object sender, EventArgs e)
         {
             if (System.Text.RegularExpressions.Regex.IsMatch(linearB.Text, "  ^ [0-9]"))
@@ -438,7 +552,15 @@ namespace ChappellEberleAstorga_Assign4
                 linearB.Text = "";
             }
         }
-
+            /* -------------------------------------------------------------------------------
+        * Function:  private void linearBKeyPress(
+        * 
+        * Use: 
+        *
+        * Parameters:object sender, KeyPressEventArgs e
+        * 
+        * Returns: bool
+        * -------------------------------------------------------------------------------*/
         private void linearBKeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.') && (e.KeyChar != '-'))
@@ -446,7 +568,15 @@ namespace ChappellEberleAstorga_Assign4
                 e.Handled = true;
             }
         }
-
+            /* -------------------------------------------------------------------------------
+        * Function:    private void quadATxtChange(
+        * 
+        * Use:
+        *
+        * Parameters:object sender, EventArgs e
+        * 
+        * Returns: 
+        * -------------------------------------------------------------------------------*/
         private void quadATxtChange(object sender, EventArgs e)
         {
             if (System.Text.RegularExpressions.Regex.IsMatch(quadA.Text, "  ^ [0-9]"))
@@ -454,7 +584,15 @@ namespace ChappellEberleAstorga_Assign4
                 quadA.Text = "";
             }
         }
-
+            /* -------------------------------------------------------------------------------
+        * Function:   private void quadAKeyPress()
+        * 
+        * Use: 
+        *
+        * Parameters: object sender, KeyPressEventArgs e
+        * 
+        * Returns: 
+        * -------------------------------------------------------------------------------*/
         private void quadAKeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.') && (e.KeyChar != '-'))
@@ -462,7 +600,15 @@ namespace ChappellEberleAstorga_Assign4
                 e.Handled = true;
             }
         }
-
+            /* -------------------------------------------------------------------------------
+        * Function:  private void quadBTxtChange()
+        * 
+        * Use: 
+        *
+        * Parameters:object sender, EventArgs e
+        * 
+        * Returns: 
+        * -------------------------------------------------------------------------------*/
         private void quadBTxtChange(object sender, EventArgs e)
         {
             if (System.Text.RegularExpressions.Regex.IsMatch(quadB.Text, "  ^ [0-9]"))
@@ -470,7 +616,15 @@ namespace ChappellEberleAstorga_Assign4
                 quadB.Text = "";
             }
         }
-
+            /* -------------------------------------------------------------------------------
+        * Function:    private void quadBKeyPress()
+        * 
+        * Use: 
+        *
+        * Parameters:object sender, KeyPressEventArgs e
+        * 
+        * Returns: 
+        * -------------------------------------------------------------------------------*/
         private void quadBKeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.') && (e.KeyChar != '-'))
@@ -478,7 +632,15 @@ namespace ChappellEberleAstorga_Assign4
                 e.Handled = true;
             }
         }
-
+             /* -------------------------------------------------------------------------------
+        * Function: private void quadCTxtChange()
+        * 
+        * Use: 
+        *
+        * Parameters:object sender, EventArgs e
+        * 
+        * Returns: text
+        * -------------------------------------------------------------------------------*/
         private void quadCTxtChange(object sender, EventArgs e)
         {
             if (System.Text.RegularExpressions.Regex.IsMatch(quadC.Text, "  ^ [0-9]"))
@@ -486,7 +648,15 @@ namespace ChappellEberleAstorga_Assign4
                 quadC.Text = "";
             }
         }
-
+            /* -------------------------------------------------------------------------------
+        * Function:  private void quadCKeyPress()
+        * 
+        * Use: 
+        *
+        * Parameters:object sender, KeyPressEventArgs e
+        * 
+        * Returns: bool
+        * -------------------------------------------------------------------------------*/
         private void quadCKeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.') && (e.KeyChar != '-'))
@@ -494,7 +664,15 @@ namespace ChappellEberleAstorga_Assign4
                 e.Handled = true;
             }
         }
-
+            /* -------------------------------------------------------------------------------
+        * Function: private void cubicA_TextChanged()
+        * 
+        * Use: 
+        *
+        * Parameters:object sender, EventArgs e
+        * 
+        * Returns: text
+        * -------------------------------------------------------------------------------*/
         private void cubicA_TextChanged(object sender, EventArgs e)
         {
             if (System.Text.RegularExpressions.Regex.IsMatch(cubicA.Text, "  ^ [0-9]"))
@@ -502,7 +680,15 @@ namespace ChappellEberleAstorga_Assign4
                 cubicA.Text = "";
             }
         }
-
+            /* -------------------------------------------------------------------------------
+        * Function:    private void cubicA_KeyPress()
+        * 
+        * Use: 
+        *
+        * Parameters:object sender, KeyPressEventArgs e
+        * 
+        * Returns: 
+        * -------------------------------------------------------------------------------*/
         private void cubicA_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.') && (e.KeyChar != '-'))
@@ -510,7 +696,15 @@ namespace ChappellEberleAstorga_Assign4
                 e.Handled = true;
             }
         }
-
+            /* -------------------------------------------------------------------------------
+        * Function: private void cubicB_TextChanged()
+        * 
+        * Use: 
+        *
+        * Parameters:object sender, EventArgs e
+        * 
+        * Returns: text
+        * -------------------------------------------------------------------------------*/
         private void cubicB_TextChanged(object sender, EventArgs e)
         {
             if (System.Text.RegularExpressions.Regex.IsMatch(cubicB.Text, "  ^ [0-9]"))
@@ -518,7 +712,15 @@ namespace ChappellEberleAstorga_Assign4
                 cubicB.Text = "";
             }
         }
-
+            /* -------------------------------------------------------------------------------
+        * Function:  private void cubicB_KeyPress()
+        * 
+        * Use: 
+        *
+        * Parameters:object sender, KeyPressEventArgs e
+        * 
+        * Returns: bool
+        * -------------------------------------------------------------------------------*/
         private void cubicB_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.') && (e.KeyChar != '-'))
@@ -526,7 +728,15 @@ namespace ChappellEberleAstorga_Assign4
                 e.Handled = true;
             }
         }
-
+            /* -------------------------------------------------------------------------------
+        * Function:    private void cubicC_TextChanged()
+        * 
+        * Use: 
+        *
+        * Parameters:object sender, EventArgs e
+        * 
+        * Returns: text
+        * -------------------------------------------------------------------------------*/
         private void cubicC_TextChanged(object sender, EventArgs e)
         {
             if (System.Text.RegularExpressions.Regex.IsMatch(cubicC.Text, "  ^ [0-9]"))
@@ -534,7 +744,15 @@ namespace ChappellEberleAstorga_Assign4
                 cubicC.Text = "";
             }
         }
-
+            /* -------------------------------------------------------------------------------
+        * Function:  private void cubicC_KeyPress()
+        * 
+        * Use: 
+        *
+        * Parameters: object sender, KeyPressEventArgs e
+        * 
+        * Returns: bool
+        * -------------------------------------------------------------------------------*/
         private void cubicC_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.') && (e.KeyChar != '-'))
@@ -542,7 +760,15 @@ namespace ChappellEberleAstorga_Assign4
                 e.Handled = true;
             }
         }
-
+            /* -------------------------------------------------------------------------------
+        * Function:  private void cubicD_TextChanged()
+        * 
+        * Use: 
+        *
+        * Parameters:object sender, EventArgs e
+        * 
+        * Returns: text
+        * -------------------------------------------------------------------------------*/
         private void cubicD_TextChanged(object sender, EventArgs e)
         {
             if (System.Text.RegularExpressions.Regex.IsMatch(cubicD.Text, "  ^ [0-9]"))
@@ -550,7 +776,15 @@ namespace ChappellEberleAstorga_Assign4
                 cubicD.Text = "";
             }
         }
-
+            /* -------------------------------------------------------------------------------
+        * Function:  private void cubicD_KeyPress()
+        * 
+        * Use: 
+        *
+        * Parameters:object sender, KeyPressEventArgs e
+        * 
+        * Returns: bool
+        * -------------------------------------------------------------------------------*/
         private void cubicD_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.') && (e.KeyChar != '-'))
@@ -558,7 +792,15 @@ namespace ChappellEberleAstorga_Assign4
                 e.Handled = true;
             }
         }
-
+           /* -------------------------------------------------------------------------------
+        * Function:  private void circleH_TextChanged()
+        * 
+        * Use: 
+        *
+        * Parameters:object sender, EventArgs e
+        * 
+        * Returns: text
+        * -------------------------------------------------------------------------------*/
         private void circleH_TextChanged(object sender, EventArgs e)
         {
             if (System.Text.RegularExpressions.Regex.IsMatch(circleH.Text, "  ^ [0-9]"))
@@ -566,7 +808,15 @@ namespace ChappellEberleAstorga_Assign4
                 circleH.Text = "";
             }
         }
-
+            /* -------------------------------------------------------------------------------
+        * Function: private void circleH_KeyPress()
+        * 
+        * Use: 
+        *
+        * Parameters:object sender, KeyPressEventArgs e
+        * 
+        * Returns: bool
+        * -------------------------------------------------------------------------------*/
         private void circleH_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.') && (e.KeyChar != '-'))
@@ -574,7 +824,15 @@ namespace ChappellEberleAstorga_Assign4
                 e.Handled = true;
             }
         }
-
+            /* -------------------------------------------------------------------------------
+        * Function:  private void circleK_TextChanged()
+        * 
+        * Use: 
+        *
+        * Parameters:object sender, EventArgs e
+        * 
+        * Returns: text
+        * -------------------------------------------------------------------------------*/
         private void circleK_TextChanged(object sender, EventArgs e)
         {
             if (System.Text.RegularExpressions.Regex.IsMatch(circleK.Text, "  ^ [0-9]"))
@@ -582,7 +840,15 @@ namespace ChappellEberleAstorga_Assign4
                 circleK.Text = "";
             }
         }
-
+            /* -------------------------------------------------------------------------------
+        * Function:    private void circleK_KeyPress()
+        * 
+        * Use: 
+        *
+        * Parameters:object sender, KeyPressEventArgs e
+        * 
+        * Returns: bool
+        * -------------------------------------------------------------------------------*/
         private void circleK_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.') && (e.KeyChar != '-'))
@@ -590,7 +856,15 @@ namespace ChappellEberleAstorga_Assign4
                 e.Handled = true;
             }
         }
-
+            /* -------------------------------------------------------------------------------
+        * Function: private void circleR_TextChanged()
+        * 
+        * Use: 
+        *
+        * Parameters:object sender, EventArgs e
+        * 
+        * Returns: text
+        * -------------------------------------------------------------------------------*/
         private void circleR_TextChanged(object sender, EventArgs e)
         {
             if (System.Text.RegularExpressions.Regex.IsMatch(circleR.Text, "  ^ [0-9]"))
@@ -598,7 +872,15 @@ namespace ChappellEberleAstorga_Assign4
                 circleR.Text = "";
             }
         }
-
+            /* -------------------------------------------------------------------------------
+        * Function: private void circleR_KeyPress()
+        * 
+        * Use: 
+        *
+        * Parameters:object sender, KeyPressEventArgs e
+        * 
+        * Returns: bool
+        * -------------------------------------------------------------------------------*/
         private void circleR_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.') && (e.KeyChar != '-'))
@@ -606,7 +888,15 @@ namespace ChappellEberleAstorga_Assign4
                 e.Handled = true;
             }
         }
-
+           /* -------------------------------------------------------------------------------
+        * Function:  private void xMinChanged()
+        * 
+        * Use: 
+        *
+        * Parameters:object sender, EventArgs e
+        * 
+        * Returns: N/A
+        * -------------------------------------------------------------------------------*/
         private void xMinChanged(object sender, EventArgs e)
         {
             int min = Convert.ToInt32(xMinRange.Value); //gets int from num up down
@@ -617,7 +907,15 @@ namespace ChappellEberleAstorga_Assign4
                 xMaxRange.Value = xMinRange.Value; //if min>max set max = min
             }
         }
-
+             /* -------------------------------------------------------------------------------
+        * Function:  private void xMaxChanged()
+        * 
+        * Use: 
+        *
+        * Parameters:object sender, EventArgs e
+        * 
+        * Returns: N/A
+        * -------------------------------------------------------------------------------*/
         private void xMaxChanged(object sender, EventArgs e)
         {
             int min = Convert.ToInt32(xMinRange.Value); //gets int from num up down
@@ -628,7 +926,15 @@ namespace ChappellEberleAstorga_Assign4
                 xMinRange.Value = xMaxRange.Value; //if min>max set min = max
             }
         }
-
+            /* -------------------------------------------------------------------------------
+        * Function:  private void yMinChanged()
+        * 
+        * Use: 
+        *
+        * Parameters:object sender, EventArgs e
+        * 
+        * Returns: N/A
+        * -------------------------------------------------------------------------------*/
         private void yMinChanged(object sender, EventArgs e)
         {
             int min = Convert.ToInt32(yMinRange.Value); //gets int from num up down
@@ -639,7 +945,15 @@ namespace ChappellEberleAstorga_Assign4
                 yMaxRange.Value = yMinRange.Value; //if min>max set max = min
             }
         }
-
+            /* -------------------------------------------------------------------------------
+        * Function:    private void yMaxChanged()
+        * 
+        * Use: 
+        *
+        * Parameters:object sender, EventArgs e
+        * 
+        * Returns: N/A
+        * -------------------------------------------------------------------------------*/
         private void yMaxChanged(object sender, EventArgs e)
         {
             int min = Convert.ToInt32(yMinRange.Value); //gets int from num up down
@@ -650,7 +964,15 @@ namespace ChappellEberleAstorga_Assign4
                 yMinRange.Value = yMaxRange.Value; //if min>max set max = min
             }
         }
-
+           /* -------------------------------------------------------------------------------
+        * Function: private void Coordinate_Click()
+        * 
+        * Use: 
+        *
+        * Parameters:object sender, EventArgs e
+        * 
+        * Returns: text 
+        * -------------------------------------------------------------------------------*/
         private void Coordinate_Click(object sender, EventArgs e)
         {
             MouseEventArgs me = (MouseEventArgs)e;
