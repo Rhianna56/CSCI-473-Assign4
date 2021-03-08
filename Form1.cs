@@ -310,7 +310,7 @@ namespace ChappellEberleAstorga_Assign4
                 x1 = Convert_X_Point(x1);
                 y1 = Convert_Y_Point(y1);
 
-                //Find the second point
+                //Find point for the second point
                 y = (float)yMin;
 
                 y2 = y;
@@ -335,8 +335,8 @@ namespace ChappellEberleAstorga_Assign4
                 y1 = Convert_Y_Point(y1);
                 y2 = Convert_Y_Point(y2);
             }
-
-
+ 
+            //draw the line
             g.DrawLine(selectedPen, x1, y1, x2, y2);
 
         }
@@ -370,10 +370,13 @@ namespace ChappellEberleAstorga_Assign4
             {
                 selectedPen = new Pen(Color.Blue);
             }
-
-            List<PointF> pointList = new List<PointF>();                        
-            float xMinR = Convert.ToSingle(xMinRange.Value); //gets min x range and scales it to picture box
-            float xMaxR = Convert.ToSingle(xMaxRange.Value); //gets max x range and scales it to picture box
+            
+            //makes list
+            List<PointF> pointList = new List<PointF>();   
+            //gets min x makes it fit box
+            float xMinR = Convert.ToSingle(xMinRange.Value); 
+            //gets max x makes it fit box
+            float xMaxR = Convert.ToSingle(xMaxRange.Value); 
             float AbsXMinR = Math.Abs(xMinR);
             float AbsXMaxR = Math.Abs(xMaxR);
             float scale = CoordinatePlane.Height/(AbsXMaxR+AbsXMinR);
@@ -381,15 +384,15 @@ namespace ChappellEberleAstorga_Assign4
             float b = Convert.ToSingle(quadB.Text) * scale;
             float c = Convert.ToSingle(quadC.Text) * scale;
 
-            //loops through the range of xmin to xmax
+            //loops through the range 
             for (float x = xMinR; x < xMaxR; x++)
             {
-                //quad equation a,b,c,d are pulled from user entries
+                //quad equation 
                 float y = (a * (x * x) + (b * x + c));
                 pointList.Add(new PointF((scale * AbsXMinR) + x * scale, (scale * AbsXMaxR) - y));
             }
             PointF[] pointArray = pointList.ToArray();
-
+            //draw the curve
             g.DrawCurve(selectedPen, pointArray);            
         }
             /* -------------------------------------------------------------------------------
@@ -421,14 +424,20 @@ namespace ChappellEberleAstorga_Assign4
             {
                 selectedPen = new Pen(Color.Blue);
             }
-
-            List<PointF> pointList = new List<PointF>();//create list of points
-            float xMinR = Convert.ToSingle(xMinRange.Value); //gets min x range and scales it to picture box
-            float xMaxR = Convert.ToSingle(xMaxRange.Value); //gets max x range and scales it to picture box
-            float AbsXMinR = Math.Abs(xMinR);//gets absolute value of MinRangeX
-            float AbsXMaxR = Math.Abs(xMaxR);//gets absolute value of MaxRangeX
-            float yMinR = Convert.ToSingle(yMinRange.Value); //gets min y range and scales it to picture box
-            float yMaxR = Convert.ToSingle(yMaxRange.Value); //gets max y range and scales it to picture box
+            //create list 
+            List<PointF> pointList = new List<PointF>();
+            //gets min x makes it fit box
+            float xMinR = Convert.ToSingle(xMinRange.Value); 
+             //gets max x makes it fit box
+            float xMaxR = Convert.ToSingle(xMaxRange.Value); 
+            //gets absolute value MinRangeX
+            float AbsXMinR = Math.Abs(xMinR);
+            //gets absolute value MaxRangeX
+            float AbsXMaxR = Math.Abs(xMaxR);
+            //gets min y makes it fit box
+            float yMinR = Convert.ToSingle(yMinRange.Value); 
+            //gets max y makes it fit box
+            float yMaxR = Convert.ToSingle(yMaxRange.Value); 
             float AbsYMinR = Math.Abs(yMinR);
             float AbsYMaxR = Math.Abs(yMaxR);
             float scaleModX = (AbsXMinR + AbsXMaxR) / 2;
@@ -439,16 +448,16 @@ namespace ChappellEberleAstorga_Assign4
             float c = Convert.ToSingle(cubicC.Text) * scale;
             float d = Convert.ToSingle(cubicD.Text) * scale;                 
 
-            //loops through the range of xmin to xmax
+            //loops through the range 
             for (float x = xMinR; x < xMaxR; x++)
             {
 
-                //cubic equation a,b,c,d are pulled from user entries
+                //cubic equation 
                 float y = ((a * (x * x * x) + (b * (x * x) + (c * x) + d)));
                 pointList.Add(new PointF((scale * scaleModX) + x * scale, (scale * AbsXMaxR) - y));
             }
             PointF[] pointArray = pointList.ToArray();
-
+            //draw the curve
             g.DrawCurve(selectedPen, pointArray);
 
         }
@@ -483,12 +492,16 @@ namespace ChappellEberleAstorga_Assign4
                 selectedPen = new Pen(Color.Blue);
             }
 
-            float xMinR = Convert.ToSingle(xMinRange.Value); //gets min x range and scales it to picture box
-            float xMaxR = Convert.ToSingle(xMaxRange.Value); //gets max x range and scales it to picture box
+            //gets min x and make it fit box
+            float xMinR = Convert.ToSingle(xMinRange.Value); 
+            //gets max x and make it fit box
+            float xMaxR = Convert.ToSingle(xMaxRange.Value); 
             float AbsXMinR = Math.Abs(xMinR);
             float AbsXMaxR = Math.Abs(xMaxR);
-            float yMinR = Convert.ToSingle(yMinRange.Value); //gets min x range and scales it to picture box
-            float yMaxR = Convert.ToSingle(yMaxRange.Value); //gets max x range and scales it to picture box
+            //gets min x and make it fit box
+            float yMinR = Convert.ToSingle(yMinRange.Value); 
+            //gets max x and make it fit box
+            float yMaxR = Convert.ToSingle(yMaxRange.Value); 
             float AbsYMinR = Math.Abs(yMinR);
             float AbsYMaxR = Math.Abs(yMaxR);
             float scaleModX = (AbsXMinR + AbsXMaxR)/2;
@@ -498,9 +511,10 @@ namespace ChappellEberleAstorga_Assign4
             float h = Convert.ToSingle(circleH.Text) * scaleX;
             float k = Convert.ToSingle(circleK.Text) * scaleY;
             double tempR = Convert.ToSingle(circleR.Text);
-            float r = (float)Math.Sqrt(tempR) * scaleX;//scales the radius
-
-            g.DrawEllipse(selectedPen, h + (scaleModX * scaleX) - r, (scaleY * scaleModY) - k - r, r * 2, r * 2);//draws ellipse
+            //fits the radius
+            float r = (float)Math.Sqrt(tempR) * scaleX;
+            //draws the ellipse
+            g.DrawEllipse(selectedPen, h + (scaleModX * scaleX) - r, (scaleY * scaleModY) - k - r, r * 2, r * 2);
 
         }        
             /* -------------------------------------------------------------------------------
