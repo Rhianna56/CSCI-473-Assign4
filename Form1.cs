@@ -185,7 +185,6 @@ namespace ChappellEberleAstorga_Assign4
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            this.ActiveControl = Header;
 
             linearColor.SelectedIndex = -1;
             quadColor.SelectedIndex = -1;
