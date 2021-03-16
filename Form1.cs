@@ -205,7 +205,7 @@ namespace ChappellEberleAstorga_Assign4
         {
            //if clear print a message on what to do
             displayBoxBottom.Clear(); 
-            string linHint = "Circle Equations ((x - h)^2 + (y - k)^2 = r^2 ), where (h, k) is the center of the circle, and r is the radius";
+            string linHint = "Circle Equations is ((x - h)^2 + (y - k)^2 = r^2 ). The H & K is the points in the center of the cirlce while the R is the raduis and defines how large the circle will be.";
             displayBoxBottom.Text = linHint;
         }
         
@@ -306,7 +306,7 @@ namespace ChappellEberleAstorga_Assign4
         {
              //if clear.... prints message on what to do
             displayBoxBottom.Clear();   
-            string linHint = "Linear Equations (y = mx + b) where 'm' is the slope and 'b' is the y-intercept";
+            string linHint = "Linear Equations (y = mx + b) . M is how the slope will look and the b is where on the graphic it will cross the y line.";
             displayBoxBottom.Text = linHint;
         }
          /* -------------------------------------------------------------------------------
@@ -322,7 +322,7 @@ namespace ChappellEberleAstorga_Assign4
         {
             //if clear print a message on what to do
             displayBoxBottom.Clear(); 
-            string linHint = "Quadratic Equations (y = ax^2 + bx + c), where a, b, and c are real number coefficients";
+            string linHint = "Quadratic Equations (y = ax^2 + bx + c). where a, b, c, and d are real number coefficients ";
             displayBoxBottom.Text = linHint;
         }
          /* -------------------------------------------------------------------------------
