@@ -370,7 +370,7 @@ namespace ChappellEberleAstorga_Assign4
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.Location = new System.Drawing.Point(12, 361);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(45, 13);
