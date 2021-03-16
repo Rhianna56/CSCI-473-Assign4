@@ -63,7 +63,6 @@ namespace ChappellEberleAstorga_Assign4
             this.button5 = new System.Windows.Forms.Button();
             this.displayBoxBottom = new System.Windows.Forms.RichTextBox();
             this.Header = new System.Windows.Forms.Label();
-            this.textHeader = new System.Windows.Forms.RichTextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.linearColor = new System.Windows.Forms.ComboBox();
             this.label18 = new System.Windows.Forms.Label();
@@ -937,7 +936,6 @@ namespace ChappellEberleAstorga_Assign4
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.RichTextBox displayBoxBottom;
         private System.Windows.Forms.Label Header;
-        private System.Windows.Forms.RichTextBox textHeader;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ComboBox linearColor;
         private System.Windows.Forms.Label label18;
