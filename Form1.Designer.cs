@@ -422,26 +422,8 @@ namespace ChappellEberleAstorga_Assign4
             this.displayBoxBottom.Size = new System.Drawing.Size(311, 92);
             this.displayBoxBottom.TabIndex = 36;
             this.displayBoxBottom.Text = "";
-            // 
-            // Header
-            // 
-            this.Header.AutoSize = true;
-            this.Header.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Header.Location = new System.Drawing.Point(66, 12);
-            this.Header.Name = "Header";
-            this.Header.Size = new System.Drawing.Size(176, 24);
-            this.Header.TabIndex = 37;
-            this.Header.Text = "Graphing Calculator";
-            // 
-            // textHeader
-            // 
-            this.textHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textHeader.Location = new System.Drawing.Point(12, 39);
-            this.textHeader.Name = "textHeader";
-            this.textHeader.Size = new System.Drawing.Size(314, 40);
-            this.textHeader.TabIndex = 38;
-            this.textHeader.Text = "Enter equations that wish to be graphed. A color is also required and can only be" +
-    " used once.\n";
+     
+      
             // 
             // button1
             // 
@@ -828,6 +810,7 @@ namespace ChappellEberleAstorga_Assign4
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
+            this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(978, 620);
             this.Controls.Add(this.button10);
             this.Controls.Add(this.xMaxRange);
@@ -903,7 +886,7 @@ namespace ChappellEberleAstorga_Assign4
             this.Controls.Add(this.linearM);
             this.Controls.Add(this.CoordinatePlane);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Graphing Calculator";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.CoordinatePlane)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xMinRange)).EndInit();
