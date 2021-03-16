@@ -45,10 +45,11 @@ namespace ChappellEberleAstorga_Assign4
         {
             InitializeComponent();
 
-            whitePen = new Pen(Color.White);
-            selectedPen = new Pen(Color.White);
             //color choices
             string[] colors = { "White", "Red", "Green", "Blue" };
+            whitePen = new Pen(Color.White);
+            selectedPen = new Pen(Color.White);
+            
             linearColor.DataSource = colors;
             linearColor.BindingContext = new BindingContext();
             quadColor.DataSource = colors;
@@ -60,55 +61,7 @@ namespace ChappellEberleAstorga_Assign4
 
         }
         
-           /* -------------------------------------------------------------------------------
-        * Function: Private void Set_Bounds()
-        * 
-        * Use:  Creates the bounds to the graphing calulator     
-        *
-        * Parameters: object sender, EventArgs e
-        * 
-        * Returns: N/A
-        * -------------------------------------------------------------------------------*/
-
-        private void Set_Bounds(object sender, EventArgs e)
-        {
-            Graphics g = CoordinatePlane.CreateGraphics();
-
-            xMin = Convert.ToInt32(xMinRange.Value);
-            xMax = Convert.ToInt32(xMaxRange.Value);
-            yMin = Convert.ToInt32(yMinRange.Value);
-            yMax = Convert.ToInt32(yMaxRange.Value);
-
-            SolidBrush paintItBlack = new SolidBrush(Color.Black);
-            g.FillRectangle(paintItBlack, 0, 0, CoordinatePlane.Width, CoordinatePlane.Height);
-
-            //Horizontal Axis
-            g.DrawLine(whitePen, 0, (float)yMax * (600 / ((float)yMax - (float)yMin)), CoordinatePlane.Width, (float)yMax * (600 / ((float)yMax - (float)yMin)));
-            //Vertical Axis
-            g.DrawLine(whitePen, (float)Math.Abs(xMin) * (600 / ((float)xMax - (float)xMin)), 0, (float)Math.Abs(xMin) * (600 / ((float)xMax - (float)xMin)), CoordinatePlane.Height);
-        }
-
-       /* -------------------------------------------------------------------------------
-        * Function: Private void Draw Axes
-        * 
-        * Use:  draws the horizonal and verical axis
-        *
-        * Parameters: object sender, PaintEventArgs e
-        * 
-        * Returns: N/A
-        * -------------------------------------------------------------------------------*/
-
-        private void DrawAxes(object sender, PaintEventArgs e)
-        {
-            Graphics g = e.Graphics;
-
-            //Horizontal 
-            g.DrawLine(whitePen, 0, (float)yMax * (600 / ((float)yMax - (float)yMin)), CoordinatePlane.Width, (float)yMax * (600 / ((float)yMax - (float)yMin)));
-            //Vertical 
-            g.DrawLine(whitePen, (float)Math.Abs(xMin) * (600 / ((float)xMax - (float)xMin)), 0, (float)Math.Abs(xMin) * (600 / ((float)xMax - (float)xMin)), CoordinatePlane.Height);
-
-        }
-
+        
  /* -------------------------------------------------------------------------------
         * Function: clearGraph()
         * 
@@ -163,6 +116,55 @@ namespace ChappellEberleAstorga_Assign4
             }
 
         }
+           /* -------------------------------------------------------------------------------
+        * Function: Private void Set_Bounds()
+        * 
+        * Use:  Creates the bounds to the graphing calulator     
+        *
+        * Parameters: object sender, EventArgs e
+        * 
+        * Returns: N/A
+        * -------------------------------------------------------------------------------*/
+
+        private void Set_Bounds(object sender, EventArgs e)
+        {
+            Graphics g = CoordinatePlane.CreateGraphics();
+
+            xMin = Convert.ToInt32(xMinRange.Value);
+            xMax = Convert.ToInt32(xMaxRange.Value);
+            yMin = Convert.ToInt32(yMinRange.Value);
+            yMax = Convert.ToInt32(yMaxRange.Value);
+
+            SolidBrush paintItBlack = new SolidBrush(Color.Black);
+            g.FillRectangle(paintItBlack, 0, 0, CoordinatePlane.Width, CoordinatePlane.Height);
+
+            //Horizontal Axis
+            g.DrawLine(whitePen, 0, (float)yMax * (600 / ((float)yMax - (float)yMin)), CoordinatePlane.Width, (float)yMax * (600 / ((float)yMax - (float)yMin)));
+            //Vertical Axis
+            g.DrawLine(whitePen, (float)Math.Abs(xMin) * (600 / ((float)xMax - (float)xMin)), 0, (float)Math.Abs(xMin) * (600 / ((float)xMax - (float)xMin)), CoordinatePlane.Height);
+        }
+
+       /* -------------------------------------------------------------------------------
+        * Function: Private void Draw Axes
+        * 
+        * Use:  draws the horizonal and verical axis
+        *
+        * Parameters: object sender, PaintEventArgs e
+        * 
+        * Returns: N/A
+        * -------------------------------------------------------------------------------*/
+
+        private void DrawAxes(object sender, PaintEventArgs e)
+        {
+            Graphics g = e.Graphics;
+
+            //Horizontal 
+            g.DrawLine(whitePen, 0, (float)yMax * (600 / ((float)yMax - (float)yMin)), CoordinatePlane.Width, (float)yMax * (600 / ((float)yMax - (float)yMin)));
+            //Vertical 
+            g.DrawLine(whitePen, (float)Math.Abs(xMin) * (600 / ((float)xMax - (float)xMin)), 0, (float)Math.Abs(xMin) * (600 / ((float)xMax - (float)xMin)), CoordinatePlane.Height);
+
+        }
+
         /* -------------------------------------------------------------------------------
         * Function: Private void convert_Y_point()
         * 
@@ -191,55 +193,7 @@ namespace ChappellEberleAstorga_Assign4
             circleColor.SelectedIndex = -1;
         }
 
-         /* -------------------------------------------------------------------------------
-        * Function:  linEqHint()
-        * 
-        * Use: Uses the rich text area to diaplay the error message      
-        *
-        * Parameters: object sender, EventArgs e
-        * 
-        * Returns: string message
-        * -------------------------------------------------------------------------------*/
-        private void LinEqHint(object sender, EventArgs e)
-        {
-             //if clear.... prints message on what to do
-            displayBoxBottom.Clear();   
-            string linHint = "Linear Equations (y = mx + b) where 'm' is the slope and 'b' is the y-intercept";
-            displayBoxBottom.Text = linHint;
-        }
-         /* -------------------------------------------------------------------------------
-        * Function: QuadEqHint()
-        * 
-        * Use: Uses the rich text area to diaplay the error message   
-        *
-        * Parameters: object sender, EventArgs e
-        * 
-        * Returns: string message
-        * -------------------------------------------------------------------------------*/
-        private void QuadEqHint(object sender, EventArgs e)
-        {
-            //if clear print a message on what to do
-            displayBoxBottom.Clear(); 
-            string linHint = "Quadratic Equations (y = ax^2 + bx + c), where a, b, and c are real number coefficients";
-            displayBoxBottom.Text = linHint;
-        }
-         /* -------------------------------------------------------------------------------
-        * Function: CubEqHint()
-        * 
-        * Use: Uses the rich text area to diaplay the error message      
-        *
-        * Parameters: object sender, EventArgs e
-        * 
-        * Returns: string message
-        * -------------------------------------------------------------------------------*/
-        private void CubEqHint(object sender, EventArgs e)
-        {
-            ///if clear print a message on what to do
-            displayBoxBottom.Clear(); 
-            string linHint = "Cubic Equations (y = ax^3 + bx^2 + cx + d), where a, b, c, and d are real number coefficients";
-            displayBoxBottom.Text = linHint;
-        }
-         /* -------------------------------------------------------------------------------
+       /* -------------------------------------------------------------------------------
         * Function: CirEqHint()
         * 
         * Use: Uses the rich text area to diaplay the error message    
@@ -340,6 +294,55 @@ namespace ChappellEberleAstorga_Assign4
             g.DrawLine(selectedPen, x1, y1, x2, y2);
 
         }
+         /* -------------------------------------------------------------------------------
+        * Function:  linEqHint()
+        * 
+        * Use: Uses the rich text area to diaplay the error message      
+        *
+        * Parameters: object sender, EventArgs e
+        * 
+        * Returns: string message
+        * -------------------------------------------------------------------------------*/
+        private void LinEqHint(object sender, EventArgs e)
+        {
+             //if clear.... prints message on what to do
+            displayBoxBottom.Clear();   
+            string linHint = "Linear Equations (y = mx + b) where 'm' is the slope and 'b' is the y-intercept";
+            displayBoxBottom.Text = linHint;
+        }
+         /* -------------------------------------------------------------------------------
+        * Function: QuadEqHint()
+        * 
+        * Use: Uses the rich text area to diaplay the error message   
+        *
+        * Parameters: object sender, EventArgs e
+        * 
+        * Returns: string message
+        * -------------------------------------------------------------------------------*/
+        private void QuadEqHint(object sender, EventArgs e)
+        {
+            //if clear print a message on what to do
+            displayBoxBottom.Clear(); 
+            string linHint = "Quadratic Equations (y = ax^2 + bx + c), where a, b, and c are real number coefficients";
+            displayBoxBottom.Text = linHint;
+        }
+         /* -------------------------------------------------------------------------------
+        * Function: CubEqHint()
+        * 
+        * Use: Uses the rich text area to diaplay the error message      
+        *
+        * Parameters: object sender, EventArgs e
+        * 
+        * Returns: string message
+        * -------------------------------------------------------------------------------*/
+        private void CubEqHint(object sender, EventArgs e)
+        {
+            ///if clear print a message on what to do
+            displayBoxBottom.Clear(); 
+            string linHint = "Cubic Equations (y = ax^3 + bx^2 + cx + d), where a, b, c, and d are real number coefficients";
+            displayBoxBottom.Text = linHint;
+        }
+  
             /* -------------------------------------------------------------------------------
         * Function:  private void quadGraph()
         * 
@@ -539,7 +542,7 @@ namespace ChappellEberleAstorga_Assign4
             /* -------------------------------------------------------------------------------
         * Function:  private void linearMKeyPress()
         * 
-        * Use: 
+        * Use: correct inputut is in = true
         *
         * Parameters: object sender, KeyPressEventArgs e
         * 
@@ -555,7 +558,7 @@ namespace ChappellEberleAstorga_Assign4
             /* -------------------------------------------------------------------------------
         * Function:    private void linearBTxtChange()
         * 
-        * Use: 
+        * Use: checks the input that is entered
         *
         * Parameters: object sender, EventArgs e
         * 
@@ -571,7 +574,7 @@ namespace ChappellEberleAstorga_Assign4
             /* -------------------------------------------------------------------------------
         * Function:  private void linearBKeyPress(
         * 
-        * Use: 
+        * Use: correct inputut is in = true
         *
         * Parameters:object sender, KeyPressEventArgs e
         * 
@@ -587,7 +590,7 @@ namespace ChappellEberleAstorga_Assign4
             /* -------------------------------------------------------------------------------
         * Function:    private void quadATxtChange(
         * 
-        * Use:
+        * Use:checks the input that is entered
         *
         * Parameters:object sender, EventArgs e
         * 
@@ -603,7 +606,7 @@ namespace ChappellEberleAstorga_Assign4
             /* -------------------------------------------------------------------------------
         * Function:   private void quadAKeyPress()
         * 
-        * Use: 
+        * Use: correct inputut is in = true
         *
         * Parameters: object sender, KeyPressEventArgs e
         * 
@@ -619,7 +622,7 @@ namespace ChappellEberleAstorga_Assign4
             /* -------------------------------------------------------------------------------
         * Function:  private void quadBTxtChange()
         * 
-        * Use: 
+        * Use: checks the input that is entered
         *
         * Parameters:object sender, EventArgs e
         * 
@@ -635,7 +638,7 @@ namespace ChappellEberleAstorga_Assign4
             /* -------------------------------------------------------------------------------
         * Function:    private void quadBKeyPress()
         * 
-        * Use: 
+        * Use: correct inputut is in = true
         *
         * Parameters:object sender, KeyPressEventArgs e
         * 
@@ -651,7 +654,7 @@ namespace ChappellEberleAstorga_Assign4
              /* -------------------------------------------------------------------------------
         * Function: private void quadCTxtChange()
         * 
-        * Use: 
+        * Use: checks the input that is entered
         *
         * Parameters:object sender, EventArgs e
         * 
@@ -667,7 +670,7 @@ namespace ChappellEberleAstorga_Assign4
             /* -------------------------------------------------------------------------------
         * Function:  private void quadCKeyPress()
         * 
-        * Use: 
+        * Use: correct inputut is in = true
         *
         * Parameters:object sender, KeyPressEventArgs e
         * 
@@ -683,7 +686,7 @@ namespace ChappellEberleAstorga_Assign4
             /* -------------------------------------------------------------------------------
         * Function: private void cubicA_TextChanged()
         * 
-        * Use: 
+        * Use: checks the input that is entered
         *
         * Parameters:object sender, EventArgs e
         * 
@@ -699,8 +702,8 @@ namespace ChappellEberleAstorga_Assign4
             /* -------------------------------------------------------------------------------
         * Function:    private void cubicA_KeyPress()
         * 
-        * Use: 
-        *
+        * Use: correct inputut is in = true
+        * 
         * Parameters:object sender, KeyPressEventArgs e
         * 
         * Returns: 
@@ -715,7 +718,7 @@ namespace ChappellEberleAstorga_Assign4
             /* -------------------------------------------------------------------------------
         * Function: private void cubicB_TextChanged()
         * 
-        * Use: 
+        * Use: checks the input that is entered
         *
         * Parameters:object sender, EventArgs e
         * 
@@ -731,7 +734,7 @@ namespace ChappellEberleAstorga_Assign4
             /* -------------------------------------------------------------------------------
         * Function:  private void cubicB_KeyPress()
         * 
-        * Use: 
+        * Use: correct inputut is in = true
         *
         * Parameters:object sender, KeyPressEventArgs e
         * 
@@ -747,7 +750,7 @@ namespace ChappellEberleAstorga_Assign4
             /* -------------------------------------------------------------------------------
         * Function:    private void cubicC_TextChanged()
         * 
-        * Use: 
+        * Use: checks the input that is entered
         *
         * Parameters:object sender, EventArgs e
         * 
@@ -763,7 +766,7 @@ namespace ChappellEberleAstorga_Assign4
             /* -------------------------------------------------------------------------------
         * Function:  private void cubicC_KeyPress()
         * 
-        * Use: 
+        * Use: correct inputut is in = true
         *
         * Parameters: object sender, KeyPressEventArgs e
         * 
@@ -779,7 +782,7 @@ namespace ChappellEberleAstorga_Assign4
             /* -------------------------------------------------------------------------------
         * Function:  private void cubicD_TextChanged()
         * 
-        * Use: 
+        * Use: checks the input that is entered
         *
         * Parameters:object sender, EventArgs e
         * 
@@ -795,7 +798,7 @@ namespace ChappellEberleAstorga_Assign4
             /* -------------------------------------------------------------------------------
         * Function:  private void cubicD_KeyPress()
         * 
-        * Use: 
+        * Use: correct inputut is in = true
         *
         * Parameters:object sender, KeyPressEventArgs e
         * 
@@ -811,7 +814,7 @@ namespace ChappellEberleAstorga_Assign4
            /* -------------------------------------------------------------------------------
         * Function:  private void circleH_TextChanged()
         * 
-        * Use: 
+        * Use: checks the input that is entered
         *
         * Parameters:object sender, EventArgs e
         * 
@@ -827,7 +830,7 @@ namespace ChappellEberleAstorga_Assign4
             /* -------------------------------------------------------------------------------
         * Function: private void circleH_KeyPress()
         * 
-        * Use: 
+        * Use: correct inputut is in = true
         *
         * Parameters:object sender, KeyPressEventArgs e
         * 
@@ -843,7 +846,7 @@ namespace ChappellEberleAstorga_Assign4
             /* -------------------------------------------------------------------------------
         * Function:  private void circleK_TextChanged()
         * 
-        * Use: 
+        * Use: checks the input that is entered
         *
         * Parameters:object sender, EventArgs e
         * 
@@ -859,7 +862,7 @@ namespace ChappellEberleAstorga_Assign4
             /* -------------------------------------------------------------------------------
         * Function:    private void circleK_KeyPress()
         * 
-        * Use: 
+        * Use: correct inputut is in = true
         *
         * Parameters:object sender, KeyPressEventArgs e
         * 
@@ -875,7 +878,7 @@ namespace ChappellEberleAstorga_Assign4
             /* -------------------------------------------------------------------------------
         * Function: private void circleR_TextChanged()
         * 
-        * Use: 
+        * Use: if input is numbers
         *
         * Parameters:object sender, EventArgs e
         * 
@@ -891,7 +894,7 @@ namespace ChappellEberleAstorga_Assign4
             /* -------------------------------------------------------------------------------
         * Function: private void circleR_KeyPress()
         * 
-        * Use: 
+        * Use: correct inputut is in = true
         *
         * Parameters:object sender, KeyPressEventArgs e
         * 
@@ -907,7 +910,7 @@ namespace ChappellEberleAstorga_Assign4
            /* -------------------------------------------------------------------------------
         * Function:  private void xMinChanged()
         * 
-        * Use: 
+        * Use: changes the min
         *
         * Parameters:object sender, EventArgs e
         * 
@@ -928,7 +931,7 @@ namespace ChappellEberleAstorga_Assign4
              /* -------------------------------------------------------------------------------
         * Function:  private void xMaxChanged()
         * 
-        * Use: 
+        * Use: changes the max
         *
         * Parameters:object sender, EventArgs e
         * 
@@ -946,10 +949,27 @@ namespace ChappellEberleAstorga_Assign4
                 xMinRange.Value = xMaxRange.Value; 
             }
         }
+                /* -------------------------------------------------------------------------------
+        * Function: private void Coordinate_Click()
+        * 
+        * Use: if user presses on graph it shows the points
+        *
+        * Parameters:object sender, EventArgs e
+        * 
+        * Returns: text 
+        * -------------------------------------------------------------------------------*/
+        private void Coordinate_Click(object sender, EventArgs e)
+        {
+            MouseEventArgs me = (MouseEventArgs)e;
+            Point coordinates = me.Location;
+
+            MessageBox.Show("X: " + coordinates.X + " Y: " + coordinates.Y);
+
+        }   
             /* -------------------------------------------------------------------------------
         * Function:  private void yMinChanged()
         * 
-        * Use: 
+        * Use: changed the min
         *
         * Parameters:object sender, EventArgs e
         * 
@@ -970,7 +990,7 @@ namespace ChappellEberleAstorga_Assign4
             /* -------------------------------------------------------------------------------
         * Function:    private void yMaxChanged()
         * 
-        * Use: 
+        * Use: changeds the max
         *
         * Parameters:object sender, EventArgs e
         * 
@@ -988,22 +1008,6 @@ namespace ChappellEberleAstorga_Assign4
                 yMinRange.Value = yMaxRange.Value; 
             }
         }
-           /* -------------------------------------------------------------------------------
-        * Function: private void Coordinate_Click()
-        * 
-        * Use: 
-        *
-        * Parameters:object sender, EventArgs e
-        * 
-        * Returns: text 
-        * -------------------------------------------------------------------------------*/
-        private void Coordinate_Click(object sender, EventArgs e)
-        {
-            MouseEventArgs me = (MouseEventArgs)e;
-            Point coordinates = me.Location;
-
-            MessageBox.Show("X: " + coordinates.X + " Y: " + coordinates.Y);
-
-        }        
+        
     }
 }
