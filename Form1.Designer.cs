@@ -641,13 +641,14 @@ namespace ChappellEberleAstorga_Assign4
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(269, 493);
+            this.button9.Location = new System.Drawing.Point(129, 20);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(74, 23);
+            this.button9.Size = new System.Drawing.Size(117, 43);
             this.button9.TabIndex = 64;
             this.button9.Text = "Clear Graph";
             this.button9.UseVisualStyleBackColor = true;
             this.button9.Click += new System.EventHandler(this.clearGraph);
+            // 
             // 
             // label1
             // 
