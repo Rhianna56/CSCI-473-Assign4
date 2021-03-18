@@ -205,7 +205,7 @@ namespace ChappellEberleAstorga_Assign4
         {
            //if clear print a message on what to do
             displayBoxBottom.Clear(); 
-            string linHint = "Circle Equations is ((x - h)^2 + (y - k)^2 = r^2 ). The H & K is the points in the center of the cirlce while the R is the raduis and defines how large the circle will be.";
+            string linHint = "a circle is the set of points (x, y) at some fixed distance r from some fixed point (h, k). \nThe value of r is called the radius of the circle, and the point (h, k) is called the center of the circle. The following equations is shown:\n (x – h)2 + (y – k)2 = r2";
             displayBoxBottom.Text = linHint;
         }
         
