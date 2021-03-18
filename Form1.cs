@@ -306,7 +306,7 @@ namespace ChappellEberleAstorga_Assign4
         {
              //if clear.... prints message on what to do
             displayBoxBottom.Clear();   
-            string linHint = "Linear Equations (y = mx + b) . M is how the slope will look and the b is where on the graphic it will cross the y line.";
+            string linHint = "Linear functions are those whose graph is a straight line. \nA linear function has the following form :\ny = f(x) = a + bx .\nThe independent variable is x and the dependent variable is y.a is the constant term or the y intercept. It is the value of the dependent variable when x = 0. b is the coefficient of the independent variable.";
             displayBoxBottom.Text = linHint;
         }
          /* -------------------------------------------------------------------------------
